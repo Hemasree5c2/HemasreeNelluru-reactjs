@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Create .env file in root directory and add REACT_APP_API_TOKEN=<BEARER_TOKEN> variable in the env file
 
 ## Available Scripts
 
