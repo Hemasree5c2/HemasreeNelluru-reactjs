@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Box, Grid, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/styles";
 import { Category, NewProduct } from "../../helpers/types";
 import Textfield from "../../components/atoms/Textfield";
 import DropDown from "../../components/atoms/Dropdown";
@@ -10,20 +9,10 @@ import { HOME_ROUTE } from "../../routes";
 import { AXIOS_GET, AXIOS_POST } from "../../helpers/axiosHelper";
 import { CATEGORY_URL, PRODUCTS_URL } from "../../helpers/apiEndpoints";
 
-const useStyles = makeStyles({
-  root: {
-    width: "100%",
-  },
-  grid: {
-    width: "600px",
-  },
-});
-
 function AddProductPage() {
   const [product, setProduct] = useState<NewProduct>({});
   const [categories, setCategories] = useState<Category[]>([]);
   const [isValidEmail, setIsValidEmail] = useState(true);
-  const classes = useStyles();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -80,12 +69,12 @@ function AddProductPage() {
   };
 
   return (
-    <Box flex={1} alignItems="center" className={classes.root} pl="35%">
+    <Box alignItems="center" pl="30%">
       <Grid container direction="column" justifyContent="center" spacing={2}>
-        <Grid item xs={3}>
+        <Grid item xs={5}>
           <Typography variant="h4">Create Product</Typography>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={5}>
           <Textfield
             placeholder="Product name"
             value={product?.name}
@@ -93,7 +82,7 @@ function AddProductPage() {
             handleChange={handleTextField}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={5}>
           <Textfield
             placeholder="Developer email"
             error={!isValidEmail}
@@ -102,7 +91,7 @@ function AddProductPage() {
             handleChange={handleTextField}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={5}>
           <Textfield
             placeholder="Description"
             value={product?.description}
@@ -111,7 +100,7 @@ function AddProductPage() {
             handleChange={handleTextField}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={5}>
           <Textfield
             placeholder="Image URL"
             value={product?.avatar}
@@ -119,7 +108,7 @@ function AddProductPage() {
             handleChange={handleTextField}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={5}>
           <DropDown
             placeholder="Categories"
             value={product?.category}
@@ -128,7 +117,7 @@ function AddProductPage() {
             onChange={handleCategoryChange}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={5}>
           <Textfield
             placeholder="Price"
             value={product?.price ?? ""}
@@ -136,7 +125,7 @@ function AddProductPage() {
             handleChange={handleTextField}
           />
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={5}>
           <Button
             label="SUBMIT"
             onClick={handleSubmit}
